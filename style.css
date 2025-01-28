@@ -1,58 +1,169 @@
-body{
-    margin:0;
-    padding:0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: rgb(230,230,230);
-    background-image: url(todolist.jpg);
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(230, 230, 230);
+  background-image: url('todolist.jpg');
+  background-size: cover;
+}
+
+.container {
+  border: none;
+  border-radius: 15px;
+  background-color: rgb(156, 222, 252);
+  height: 50vh;
+  width: 80vw; /* Adjusted to use more space on mobile */
+  max-width: 600px; /* Ensures it doesn't get too wide on large screens */
+  box-shadow: 4px 5px 6px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.header {
+  text-align: center;
+  padding: 10px;
+  font-size: 1.7rem;
+  font-weight: 900;
+  border-bottom: 0.5px solid white;
+  margin-bottom: 20px;
+}
+
+.addtask {
+  display: flex;
+  flex-direction: column; /* Stack input and button on top of each other on mobile */
+  gap: 10px;
+  align-items: center; /* Center the elements */
+  margin-bottom: 15px;
+}
+
+input {
+  padding: 7px;
+  border-radius: 5px;
+  width: 80%; /* Make input field responsive */
+  max-width: 400px; /* Max width for large screens */
+}
+
+button {
+  background-color: rgb(244, 242, 153);
+  color: rgb(11, 11, 11);
+  padding: 6px 12px;
+  border-radius: 5px;
+  margin: 0 5px; /* Space between buttons */
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+button:hover {
+  border: 1px solid black;
+  box-shadow: 2px 2px 2px;
+  background-color: rgb(224, 222, 100); /* Slight color change on hover */
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color: #fff;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+li button {
+  margin: 0 5px;
+  padding: 4px 10px;
+}
+
+li span {
+  flex-grow: 1;
+}
+
+.task-btn {
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
+.task-details {
+  font-size: 12px;
+  color: #555;
+  margin-top: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .addtask {
+      flex-direction: row; /* Align the input and button horizontally on larger screens */
+      justify-content: space-between;
+      width: 100%;
   }
-  .container{
-    border: none;
-    border-radius: 15px;
-    background-color: rgb(156,222,252);
-    height: 50vh;
-    width: 25vw;
-    box-shadow: 4px 5px 6px;
+
+  input {
+      width: 70%; /* Make input field narrower on large screens */
   }
-  
-  .header{
-    text-align: center;
-    padding: 10px;
-    font-size: 1.7rem;
-    font-weight: 900;
-    border-bottom: 0.5px solid white;
-    margin-bottom:20px;
+
+  button {
+      width: 20%; /* Make button widths more consistent on large screens */
   }
-  .addtask{
-    display: flex;
-    justify-content:space-evenly;
-  
+
+  .container {
+      width: 40vw; /* Make the container narrower on large screens */
   }
-  input{
-    padding:7px;
-    border-radius: 5px;
+
+  .task-btn {
+      font-size: 14px;
+      padding: 8px 15px;
   }
-  button:hover{
-    border: 1px solid black;
-    box-shadow: 2px 2px 2px;
+
+  .header {
+      font-size: 2rem; /* Larger text for desktop view */
   }
-  button{
-    background-color: rgb(244,242,153);
-    color:rgb(11,11,11);
-    padding: 2px;
-    border-radius: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  li {
+      flex-direction: column; /* Stack task elements on mobile */
+      align-items: flex-start; /* Align buttons to the left */
+      text-align: left;
   }
-  ul{
-    list-style: none;
-    padding:15px;
+
+  li button {
+      width: 100%; /* Full width buttons on mobile */
+      margin: 5px 0;
   }
-  li{
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid white;
-    border-radius:5px;
-    padding: 8px;
-    margin-bottom: 7px;
+
+  .task-btn {
+      width: 100%;
+      text-align: center; /* Center text inside buttons */
   }
+}
+.welcome-container {
+  text-align: center;
+  padding: 20px;
+  background-color: rgb(156, 222, 252);
+  border-radius: 15px;
+  width: 50vw;
+  max-width: 400px;
+}
+
+.welcome-container h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.welcome-container button {
+  padding: 10px 20px;
+  background-color: rgb(244, 242, 153);
+  cursor: pointer;
+}
+
+.welcome-container button:hover {
+  background-color: rgb(224, 222, 100);
+}
