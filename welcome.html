@@ -1,0 +1,32 @@
+<!-- welcome.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Quick Paste</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="welcome-container">
+        <h1>Welcome to Quick Paste!</h1>
+        <p>Click the button below to go to your Todo List:</p>
+        <button id="go-to-todolist">Go to Quick Paste</button>
+    </div>
+
+    <script>
+        // Ensure it stays on the welcome page after reload
+        window.onload = () => {
+            if (sessionStorage.getItem('visited')) {
+                window.location.href = 'index.html';  // Redirect to Todo List page if already visited
+            }
+        }
+
+        // Handle button click event
+        document.getElementById('go-to-todolist').onclick = function() {
+            sessionStorage.setItem('visited', true);  // Store the visited status
+            window.location.href = 'index.html';  // Redirect to Todo List page
+        }
+    </script>
+</body>
+</html>
