@@ -147,6 +147,23 @@ function createTaskButtons(newtask, taskSpan) {
         buttonContainer.style.display = isHidden ? 'flex' : 'none';
     });
 }
+function showInfoMessage(message) {
+    const existingMsg = document.querySelector('.info-message');
+    if (existingMsg) existingMsg.remove();
+
+    const msgDiv = document.createElement('div');
+    msgDiv.textContent = message;
+    msgDiv.className = 'info-message';
+    document.querySelector('.container').insertBefore(msgDiv, document.getElementById('tasklist'));
+
+    // Fade out and remove after 3 seconds
+    setTimeout(() => {
+        msgDiv.style.opacity = '0';
+        setTimeout(() => {
+            msgDiv.remove();
+        }, 500); // Match transition time
+    }, 3000);
+}
 
 window.onload = () => {
     if (!sessionStorage.getItem('visited')) {
