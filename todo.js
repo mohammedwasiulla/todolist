@@ -136,7 +136,7 @@ function createTaskButtons(newtask, taskSpan) {
     // };
     // buttonContainer.appendChild(viewbtn);
 
-    // newtask.appendChild(buttonContainer);
+      newtask.appendChild(buttonContainer);
 
     // Show/hide buttons on span click
     taskSpan.addEventListener('click', () => {
