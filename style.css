@@ -164,45 +164,67 @@ li span {
 }
 
 @media screen and (max-width: 600px) {
-  li {
+  /* Force li to be column layout */
+  ul li,
+  .task-list li,
+  #tasklist li {
+    display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
-    text-align: left;
+    text-align: left !important;
     gap: 8px !important;
   }
 
-  /* Target all buttons inside li elements */
-  li button {
+  /* Target all possible button selectors */
+  li button,
+  ul li button,
+  .task-list li button,
+  #tasklist li button,
+  .task-btn {
     width: 100% !important;
     margin: 3px 0 !important;
-    padding: 8px !important;
+    padding: 8px 12px !important;
     text-align: center !important;
     display: block !important;
     box-sizing: border-box !important;
+    float: none !important;
+    clear: both !important;
   }
 
-  .task-btn {
-    width: 100% !important;
-    text-align: center !important;
-    display: block !important;
-    margin: 3px 0 !important;
-  }
-
-  /* Ensure the task text spans full width */
-  li span {
+  /* Ensure task text spans full width */
+  li span,
+  ul li span,
+  .task-list li span,
+  #tasklist li span {
     width: 100% !important;
     margin-bottom: 8px !important;
+    display: block !important;
   }
 
-  /* If there are any button containers */
-  .button-group {
+  /* Override any flex containers for buttons */
+  li > div,
+  ul li > div,
+  .task-list li > div,
+  #tasklist li > div {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 5px !important;
+  }
+
+  /* Button containers */
+  .button-group,
+  .task-buttons,
+  .btn-group {
     width: 100% !important;
     flex-direction: column !important;
     gap: 5px !important;
     display: flex !important;
   }
 
-  .button-group button {
+  .button-group button,
+  .task-buttons button,
+  .btn-group button {
     width: 100% !important;
     margin: 3px 0 !important;
     display: block !important;
