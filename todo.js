@@ -37,34 +37,31 @@ function createTaskElement(taskContent, isCompleted = false) {
     }
     newtask.appendChild(taskSpan);
 
+    // Container to hold buttons (hidden initially)
     const buttonContainer = document.createElement('div');
     buttonContainer.classList.add('button-container');
-    buttonContainer.style.display = 'none'; // Hide buttons initially
-
-    createTaskButtons(newtask, taskSpan, buttonContainer);
-
+    buttonContainer.style.display = 'none';
     newtask.appendChild(buttonContainer);
-    tasklist.appendChild(newtask);
 
+    // Create and append task buttons inside container
+    createTaskButtons(buttonContainer, newtask, taskSpan);
+
+    // Add click event to span to show buttons
     taskSpan.addEventListener('click', (event) => {
         event.stopPropagation();
-        hideAllButtons(); // Hide buttons on other tasks
-        buttonContainer.style.display = 'flex';
+        document.querySelectorAll('.button-container').forEach(container => {
+            container.style.display = 'none';
+        });
+        buttonContainer.style.display = 'block';
     });
-}
 
-function hideAllButtons() {
-    document.querySelectorAll('.button-container').forEach(container => {
-        container.style.display = 'none';
+    // Click anywhere else on document hides all buttons
+    document.addEventListener('click', () => {
+        buttonContainer.style.display = 'none';
     });
-}
 
-document.addEventListener('click', (event) => {
-    const isClickInsideTask = event.target.closest('li');
-    if (!isClickInsideTask) {
-        hideAllButtons();
-    }
-});
+    tasklist.appendChild(newtask);
+}
 
 function addtask() {
     const taskInput = document.getElementById('inputtask');
@@ -73,6 +70,7 @@ function addtask() {
         alert("Please enter a task!");
         return;
     }
+
     createTaskElement(taskContent);
     taskInput.value = '';
     saveTasks();
@@ -89,13 +87,14 @@ function setupEnterKeySupport() {
     }
 }
 
-function createTaskButtons(newtask, taskSpan, container) {
+function createTaskButtons(container, newtask, taskSpan) {
     const completebtn = document.createElement('button');
     completebtn.textContent = taskSpan.style.textDecoration === 'line-through' ? "Uncomplete" : "Complete";
     completebtn.classList.add('task-btn', 'complete');
     container.appendChild(completebtn);
 
-    completebtn.onclick = function() {
+    completebtn.onclick = function(event) {
+        event.stopPropagation();
         if (taskSpan.style.textDecoration === 'line-through') {
             taskSpan.style.textDecoration = 'none';
             taskSpan.style.opacity = '1';
@@ -113,19 +112,24 @@ function createTaskButtons(newtask, taskSpan, container) {
     editbtn.classList.add('task-btn', 'edit');
     container.appendChild(editbtn);
 
-    editbtn.onclick = function() {
+    editbtn.onclick = function(event) {
+        event.stopPropagation();
         const taskEditInput = document.createElement('input');
         taskEditInput.type = 'text';
         taskEditInput.value = taskSpan.textContent;
         newtask.insertBefore(taskEditInput, taskSpan);
         taskSpan.style.display = 'none';
+
         editbtn.textContent = 'Save';
-        editbtn.onclick = function() {
+        editbtn.onclick = function(event) {
+            event.stopPropagation();
             taskSpan.textContent = taskEditInput.value.trim();
             taskSpan.style.display = 'inline';
             taskEditInput.remove();
             editbtn.textContent = 'Edit';
             saveTasks();
+            // Reset behavior
+            editbtn.onclick = arguments.callee;
         };
     };
 
@@ -134,7 +138,8 @@ function createTaskButtons(newtask, taskSpan, container) {
     deletebtn.classList.add('task-btn', 'delete');
     container.appendChild(deletebtn);
 
-    deletebtn.onclick = function() {
+    deletebtn.onclick = function(event) {
+        event.stopPropagation();
         newtask.remove();
         saveTasks();
     };
@@ -144,11 +149,13 @@ function createTaskButtons(newtask, taskSpan, container) {
     viewbtn.classList.add('task-btn', 'view');
     container.appendChild(viewbtn);
 
-    viewbtn.onclick = function() {
+    viewbtn.onclick = function(event) {
+        event.stopPropagation();
         const taskDetails = document.createElement('div');
         taskDetails.classList.add('task-details');
         taskDetails.textContent = `Task: ${taskSpan.textContent}`;
         newtask.appendChild(taskDetails);
+
         setTimeout(() => {
             taskDetails.remove();
         }, 3000);
@@ -160,13 +167,13 @@ window.onload = () => {
         window.location.href = 'welcome.html';
     }
 
-    // Add helper message to UI
-    const hint = document.createElement('p');
-    hint.textContent = "ℹ️ Click on a task to view options like Edit, Complete, or Delete.";
-    hint.style.fontSize = '0.9rem';
-    hint.style.marginTop = '1rem';
-    hint.style.color = '#333';
-    document.body.insertBefore(hint, document.getElementById('tasklist'));
+    const infoMessage = document.createElement('p');
+    infoMessage.textContent = 'ℹ️ Click on task content to mark or alter the task.';
+    infoMessage.style.fontStyle = 'italic';
+    infoMessage.style.fontSize = '14px';
+    infoMessage.style.marginBottom = '10px';
+    const container = document.getElementById('tasklist-container') || document.body;
+    container.insertBefore(infoMessage, container.firstChild);
 
     loadTasks();
     setupEnterKeySupport();
