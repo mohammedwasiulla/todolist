@@ -15,8 +15,8 @@ body {
   border-radius: 15px;
   background-color: rgb(156, 222, 252);
   height: 50vh;
-  width: 80vw; /* Adjusted to use more space on mobile */
-  max-width: 600px; /* Ensures it doesn't get too wide on large screens */
+  width: 80vw;
+  max-width: 600px;
   box-shadow: 4px 5px 6px;
   padding: 20px;
   box-sizing: border-box;
@@ -33,17 +33,18 @@ body {
 
 .addtask {
   display: flex;
-  flex-direction: column; /* Stack input and button on top of each other on mobile */
+  flex-direction: column;
   gap: 10px;
-  align-items: center; /* Center the elements */
+  align-items: center;
   margin-bottom: 15px;
 }
 
 input {
   padding: 7px;
   border-radius: 5px;
-  width: 80%; /* Make input field responsive */
-  max-width: 400px; /* Max width for large screens */
+  width: 80%;
+  max-width: 400px;
+  border: 1px solid #ccc;
 }
 
 button {
@@ -51,15 +52,18 @@ button {
   color: rgb(11, 11, 11);
   padding: 6px 12px;
   border-radius: 5px;
-  margin: 0 5px; /* Space between buttons */
+  border: none;
+  margin: 0 5px;
   transition: background-color 0.3s ease;
   cursor: pointer;
+  white-space: nowrap; /* Prevents text wrapping */
+  min-width: fit-content; /* Ensures button accommodates text */
 }
 
 button:hover {
   border: 1px solid black;
   box-shadow: 2px 2px 2px;
-  background-color: rgb(224, 222, 100); /* Slight color change on hover */
+  background-color: rgb(224, 222, 100);
 }
 
 ul {
@@ -70,26 +74,33 @@ ul {
 li {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border: 1px solid white;
   border-radius: 5px;
   padding: 8px;
   margin-bottom: 7px;
   background-color: #fff;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  gap: 10px; /* Adds space between elements */
 }
 
 li button {
-  margin: 0 5px;
-  padding: 4px 10px;
+  margin: 0 2px;
+  padding: 4px 8px;
+  font-size: 12px;
+  flex-shrink: 0; /* Prevents buttons from shrinking */
+  min-width: fit-content;
 }
 
 li span {
   flex-grow: 1;
+  margin-right: 10px;
 }
 
 .task-btn {
   font-size: 12px;
   padding: 6px 10px;
+  white-space: nowrap;
 }
 
 .task-details {
@@ -98,52 +109,85 @@ li span {
   margin-top: 5px;
 }
 
+.button-group {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
 @media screen and (min-width: 768px) {
   .addtask {
-      flex-direction: row; /* Align the input and button horizontally on larger screens */
-      justify-content: space-between;
-      width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
   }
 
   input {
-      width: 70%; /* Make input field narrower on large screens */
+    width: 70%;
   }
 
-  button {
-      width: 20%; /* Make button widths more consistent on large screens */
+  .addtask button {
+    width: auto; /* Remove fixed width constraint */
+    min-width: 80px; /* Minimum width for consistency */
+    flex-shrink: 0;
   }
 
   .container {
-      width: 40vw; /* Make the container narrower on large screens */
+    width: 40vw;
+    max-width: 700px; /* Slightly larger max-width for more space */
   }
 
   .task-btn {
-      font-size: 14px;
-      padding: 8px 15px;
+    font-size: 13px;
+    padding: 6px 12px;
+    min-width: 60px; /* Minimum width for task buttons */
   }
 
   .header {
-      font-size: 2rem; /* Larger text for desktop view */
+    font-size: 2rem;
+  }
+
+  li {
+    padding: 10px 12px; /* More padding for better spacing */
+  }
+
+  li button {
+    padding: 5px 10px;
+    font-size: 13px;
+    margin: 0 3px;
+  }
+
+  /* Ensure buttons don't get too cramped */
+  .button-group {
+    gap: 8px;
+    min-width: 200px; /* Ensures adequate space for all buttons */
   }
 }
 
 @media screen and (max-width: 600px) {
   li {
-      flex-direction: column; /* Stack task elements on mobile */
-      align-items: flex-start; /* Align buttons to the left */
-      text-align: left;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
   }
 
   li button {
-      width: 100%; /* Full width buttons on mobile */
-      margin: 5px 0;
+    width: 100%;
+    margin: 5px 0;
+    text-align: center;
   }
 
   .task-btn {
-      width: 100%;
-      text-align: center; /* Center text inside buttons */
+    width: 100%;
+    text-align: center;
+  }
+
+  .button-group {
+    width: 100%;
+    flex-direction: column;
   }
 }
+
 .welcome-container {
   text-align: center;
   padding: 20px;
@@ -162,6 +206,8 @@ li span {
   padding: 10px 20px;
   background-color: rgb(244, 242, 153);
   cursor: pointer;
+  border: none;
+  border-radius: 5px;
 }
 
 .welcome-container button:hover {
