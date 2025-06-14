@@ -56,8 +56,8 @@ button {
   margin: 0 5px;
   transition: background-color 0.3s ease;
   cursor: pointer;
-  white-space: nowrap; /* Prevents text wrapping */
-  min-width: fit-content; /* Ensures button accommodates text */
+  white-space: nowrap;
+  min-width: fit-content;
 }
 
 button:hover {
@@ -81,14 +81,14 @@ li {
   margin-bottom: 7px;
   background-color: #fff;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-  gap: 10px; /* Adds space between elements */
+  gap: 10px;
 }
 
 li button {
   margin: 0 2px;
   padding: 4px 8px;
   font-size: 12px;
-  flex-shrink: 0; /* Prevents buttons from shrinking */
+  flex-shrink: 0;
   min-width: fit-content;
 }
 
@@ -127,20 +127,20 @@ li span {
   }
 
   .addtask button {
-    width: auto; /* Remove fixed width constraint */
-    min-width: 80px; /* Minimum width for consistency */
+    width: auto;
+    min-width: 80px;
     flex-shrink: 0;
   }
 
   .container {
     width: 40vw;
-    max-width: 700px; /* Slightly larger max-width for more space */
+    max-width: 700px;
   }
 
   .task-btn {
     font-size: 13px;
     padding: 6px 12px;
-    min-width: 60px; /* Minimum width for task buttons */
+    min-width: 60px;
   }
 
   .header {
@@ -148,7 +148,7 @@ li span {
   }
 
   li {
-    padding: 10px 12px; /* More padding for better spacing */
+    padding: 10px 12px;
   }
 
   li button {
@@ -157,38 +157,39 @@ li span {
     margin: 0 3px;
   }
 
-  /* Ensure buttons don't get too cramped */
   .button-group {
     gap: 8px;
-    min-width: 200px; /* Ensures adequate space for all buttons */
+    min-width: 200px;
   }
 }
 
 @media screen and (max-width: 600px) {
   li {
-      flex-direction: column; /* Stack task elements on mobile */
-      align-items: flex-start; /* Align buttons to the left */
-      text-align: left;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
   }
 
   li button {
-      width: 100%; /* Full width buttons on mobile */
-      margin: 5px 0;
+    width: 100%;
+    margin: 5px 0;
+    text-align: center;
   }
 
   .task-btn {
-      width: 100%;
-      text-align: center; /* Center text inside buttons */
+    width: 100%;
+    text-align: center;
   }
+
   .button-group {
     width: 100%;
-    flex-direction: row;
+    flex-direction: column;
     gap: 5px;
   }
 
   .button-group button {
     width: 100% !important;
-    margin: 0 !important;
+    margin: 5px 0 !important;
   }
 }
 
