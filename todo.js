@@ -59,25 +59,25 @@ function createTaskElement(taskContent, isCompleted = false) {
     };
     buttonContainer.appendChild(completebtn);
 
-    const editbtn = document.createElement('button');
-    editbtn.textContent = "Edit";
-    editbtn.classList.add('task-btn', 'edit');
-    editbtn.onclick = function () {
-        const taskEditInput = document.createElement('input');
-        taskEditInput.type = 'text';
-        taskEditInput.value = taskSpan.textContent;
-        newtask.insertBefore(taskEditInput, taskSpan);
-        taskSpan.style.display = 'none';
-        editbtn.textContent = 'Save';
-        editbtn.onclick = function () {
-            taskSpan.textContent = taskEditInput.value.trim();
-            taskSpan.style.display = 'inline';
-            taskEditInput.remove();
-            editbtn.textContent = 'Edit';
-            saveTasks();
-        };
-    };
-    buttonContainer.appendChild(editbtn);
+    // const editbtn = document.createElement('button');
+    // editbtn.textContent = "Edit";
+    // editbtn.classList.add('task-btn', 'edit');
+    // editbtn.onclick = function () {
+    //     const taskEditInput = document.createElement('input');
+    //     taskEditInput.type = 'text';
+    //     taskEditInput.value = taskSpan.textContent;
+    //     newtask.insertBefore(taskEditInput, taskSpan);
+    //     taskSpan.style.display = 'none';
+    //     editbtn.textContent = 'Save';
+    //     editbtn.onclick = function () {
+    //         taskSpan.textContent = taskEditInput.value.trim();
+    //         taskSpan.style.display = 'inline';
+    //         taskEditInput.remove();
+    //         editbtn.textContent = 'Edit';
+    //         saveTasks();
+    //     };
+    // };
+    // buttonContainer.appendChild(editbtn);
 
     const deletebtn = document.createElement('button');
     deletebtn.textContent = "Delete";
