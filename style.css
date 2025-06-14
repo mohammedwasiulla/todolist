@@ -184,7 +184,7 @@ li span {
 
   .button-group {
     width: 100%;
-    flex-direction: column;
+    flex-direction: row;
     gap: 5px;
   }
 
