@@ -8,162 +8,157 @@ body {
   background-color: rgb(230, 230, 230);
   background-image: url('todolist.jpg');
   background-size: cover;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .container {
   border: none;
   border-radius: 15px;
   background-color: rgb(156, 222, 252);
-  height: 50vh;
-  width: 80vw; /* Adjusted to use more space on mobile */
-  max-width: 600px; /* Ensures it doesn't get too wide on large screens */
-  box-shadow: 4px 5px 6px;
+  height: auto;
+  width: 90vw;
+  max-width: 600px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   padding: 20px;
   box-sizing: border-box;
 }
 
 .header {
   text-align: center;
-  padding: 10px;
-  font-size: 1.7rem;
-  font-weight: 900;
-  border-bottom: 0.5px solid white;
-  margin-bottom: 20px;
+  padding: 10px 0;
+  font-size: 2rem;
+  font-weight: bold;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 15px;
+}
+
+.task-hint {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .addtask {
   display: flex;
-  flex-direction: column; /* Stack input and button on top of each other on mobile */
+  flex-direction: column;
   gap: 10px;
-  align-items: center; /* Center the elements */
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-input {
-  padding: 7px;
+.addtask input[type="text"] {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  width: 80%; /* Make input field responsive */
-  max-width: 400px; /* Max width for large screens */
 }
 
-button {
-  background-color: rgb(244, 242, 153);
-  color: rgb(11, 11, 11);
-  padding: 6px 12px;
+.addtask button {
+  padding: 10px;
+  background-color: #f4f299;
+  border: none;
   border-radius: 5px;
-  margin: 0 5px; /* Space between buttons */
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  border: 1px solid black;
-  box-shadow: 2px 2px 2px;
-  background-color: rgb(224, 222, 100); /* Slight color change on hover */
+.addtask button:hover {
+  background-color: #e0de64;
 }
 
-ul {
-  list-style: none;
+.task-list {
+  list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
-li {
+.task-list li {
   display: flex;
-  justify-content: space-between;
-  border: 1px solid white;
-  border-radius: 5px;
-  padding: 8px;
-  margin-bottom: 7px;
-  background-color: #fff;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #ffffffb0;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-li button {
-  margin: 0 5px;
-  padding: 4px 10px;
+.task-list li:hover {
+  background-color: #f0f0f0;
 }
 
-li span {
-  flex-grow: 1;
+.task-list li span {
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 .task-btn {
-  font-size: 12px;
-  padding: 6px 10px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.task-btn.complete {
+  background-color: #b0e57c;
+}
+
+.task-btn.edit {
+  background-color: #ffd966;
+}
+
+.task-btn.delete {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.task-btn.view {
+  background-color: #6bcaff;
+  color: white;
+}
+
+.task-btn:hover {
+  filter: brightness(0.95);
 }
 
 .task-details {
-  font-size: 12px;
-  color: #555;
   margin-top: 5px;
-}
-
-@media screen and (min-width: 768px) {
-  .addtask {
-      flex-direction: row; /* Align the input and button horizontally on larger screens */
-      justify-content: space-between;
-      width: 100%;
-  }
-
-  input {
-      width: 70%; /* Make input field narrower on large screens */
-  }
-
-  button {
-      width: 20%; /* Make button widths more consistent on large screens */
-  }
-
-  .container {
-      width: 40vw; /* Make the container narrower on large screens */
-  }
-
-  .task-btn {
-      font-size: 14px;
-      padding: 8px 15px;
-  }
-
-  .header {
-      font-size: 2rem; /* Larger text for desktop view */
-  }
+  font-size: 0.85rem;
+  color: #333;
+  background-color: #eef6ff;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 600px) {
-  li {
-      flex-direction: column; /* Stack task elements on mobile */
-      align-items: flex-start; /* Align buttons to the left */
-      text-align: left;
+  .addtask {
+    flex-direction: column;
   }
 
-  li button {
-      width: 100%; /* Full width buttons on mobile */
-      margin: 5px 0;
+  .addtask input[type="text"],
+  .addtask button {
+    width: 100%;
   }
 
   .task-btn {
-      width: 100%;
-      text-align: center; /* Center text inside buttons */
+    width: 100%;
+    text-align: center;
   }
-}
-.welcome-container {
-  text-align: center;
-  padding: 20px;
-  background-color: rgb(156, 222, 252);
-  border-radius: 15px;
-  width: 50vw;
-  max-width: 400px;
-}
 
-.welcome-container h1 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-}
-
-.welcome-container button {
-  padding: 10px 20px;
-  background-color: rgb(244, 242, 153);
-  cursor: pointer;
-}
-
-.welcome-container button:hover {
-  background-color: rgb(224, 222, 100);
+  .button-container {
+    flex-direction: column;
+    width: 100%;
+  }
 }
