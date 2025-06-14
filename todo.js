@@ -122,21 +122,21 @@ function createTaskButtons(newtask, taskSpan) {
     };
     buttonContainer.appendChild(deletebtn);
 
-    const viewbtn = document.createElement('button');
-    viewbtn.textContent = "View";
-    viewbtn.classList.add('task-btn', 'view');
-    viewbtn.onclick = function () {
-        const taskDetails = document.createElement('div');
-        taskDetails.classList.add('task-details');
-        taskDetails.textContent = `Task: ${taskSpan.textContent}`;
-        newtask.appendChild(taskDetails);
-        setTimeout(() => {
-            taskDetails.remove();
-        }, 3000);
-    };
-    buttonContainer.appendChild(viewbtn);
+    // const viewbtn = document.createElement('button');
+    // viewbtn.textContent = "View";
+    // viewbtn.classList.add('task-btn', 'view');
+    // viewbtn.onclick = function () {
+    //     const taskDetails = document.createElement('div');
+    //     taskDetails.classList.add('task-details');
+    //     taskDetails.textContent = `Task: ${taskSpan.textContent}`;
+    //     newtask.appendChild(taskDetails);
+    //     setTimeout(() => {
+    //         taskDetails.remove();
+    //     }, 3000);
+    // };
+    // buttonContainer.appendChild(viewbtn);
 
-    newtask.appendChild(buttonContainer);
+    // newtask.appendChild(buttonContainer);
 
     // Show/hide buttons on span click
     taskSpan.addEventListener('click', () => {
