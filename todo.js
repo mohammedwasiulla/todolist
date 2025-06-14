@@ -55,6 +55,9 @@ function addtask() {
     createTaskElement(taskContent);
     taskInput.value = '';
     saveTasks();
+    
+    // Show info message temporarily
+    showInfoMessage("👉 Click on task content to mark and delete");
 }
 
 // Support Enter key
