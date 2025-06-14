@@ -142,7 +142,7 @@ function setupEnterKeySupport() {
 // Display helper message under the Quick Paste heading
 function showTaskHint() {
     const hintMsg = document.createElement('div');
-    hintMsg.textContent = 'ℹ️ Click on task content to mark or alter the task.';
+    hintMsg.textContent = 'ℹ️ Click on task content to mark or Delete.';
     hintMsg.style.fontSize = '14px';
     hintMsg.style.marginTop = '10px';
     hintMsg.style.color = '#555';
